@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OrdenJediModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Especies">
+          <Key>
+            <PropertyRef Name="EspecieID" />
+          </Key>
+          <Property Name="EspecieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Especie" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="ModificadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="EstatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estatus">
+          <Key>
+            <PropertyRef Name="EstatusID" />
+          </Key>
+          <Property Name="EstatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="ModificadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Miembros">
+          <Key>
+            <PropertyRef Name="MiembroID" />
+          </Key>
+          <Property Name="MiembroID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="50" />
+          <Property Name="EspecieID" Type="int" Nullable="false" />
+          <Property Name="PlanetaID" Type="int" Nullable="false" />
+          <Property Name="RangoID" Type="int" Nullable="false" />
+          <Property Name="NivelMidiclorianos" Type="int" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="MiembroConsejo" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="ModificadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="EstatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Planetas">
+          <Key>
+            <PropertyRef Name="PlanetaID" />
+          </Key>
+          <Property Name="PlanetaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Planeta" Type="nvarchar" MaxLength="50" />
+          <Property Name="PerteneceARepublica" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="ModificadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="EstatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rangos">
+          <Key>
+            <PropertyRef Name="RangoID" />
+          </Key>
+          <Property Name="RangoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rango" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="ModificadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="EstatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelJedisPadawans">
+          <Key>
+            <PropertyRef Name="InstructorID" />
+            <PropertyRef Name="PadawanID" />
+          </Key>
+          <Property Name="InstructorID" Type="int" Nullable="false" />
+          <Property Name="PadawanID" Type="int" Nullable="false" />
+          <Property Name="CreadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="ModificadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="EstatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelMiembrosPlanetas">
+          <Key>
+            <PropertyRef Name="MiembroID" />
+            <PropertyRef Name="PlanetaID" />
+          </Key>
+          <Property Name="MiembroID" Type="int" Nullable="false" />
+          <Property Name="PlanetaID" Type="int" Nullable="false" />
+          <Property Name="CreadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="ModificadoPor" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="EstatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="OrdenJediModelStoreContainer">
+          <EntitySet Name="Especies" EntityType="Self.Especies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Miembros" EntityType="Self.Miembros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Planetas" EntityType="Self.Planetas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rangos" EntityType="Self.Rangos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelJedisPadawans" EntityType="Self.RelJedisPadawans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelMiembrosPlanetas" EntityType="Self.RelMiembrosPlanetas" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrdenJediModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Especies">
+          <Key>
+            <PropertyRef Name="EspecieID" />
+          </Key>
+          <Property Name="EspecieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Especie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="EstatusID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Miembros">
+          <Key>
+            <PropertyRef Name="MiembroID" />
+          </Key>
+          <Property Name="MiembroID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EspecieID" Type="Int32" Nullable="false" />
+          <Property Name="PlanetaID" Type="Int32" Nullable="false" />
+          <Property Name="RangoID" Type="Int32" Nullable="false" />
+          <Property Name="NivelMidiclorianos" Type="Int32" Nullable="false" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="MiembroConsejo" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="EstatusID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Planetas">
+          <Key>
+            <PropertyRef Name="PlanetaID" />
+          </Key>
+          <Property Name="PlanetaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Planeta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PerteneceARepublica" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="EstatusID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rangos">
+          <Key>
+            <PropertyRef Name="RangoID" />
+          </Key>
+          <Property Name="RangoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rango" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="EstatusID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelJedisPadawans">
+          <Key>
+            <PropertyRef Name="InstructorID" />
+            <PropertyRef Name="PadawanID" />
+          </Key>
+          <Property Name="InstructorID" Type="Int32" Nullable="false" />
+          <Property Name="PadawanID" Type="Int32" Nullable="false" />
+          <Property Name="CreadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="EstatusID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="OrdenJediEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Especies" EntityType="Self.Especies" />
+          <EntitySet Name="Miembros" EntityType="Self.Miembros" />
+          <EntitySet Name="Planetas" EntityType="Self.Planetas" />
+          <EntitySet Name="Rangos" EntityType="Self.Rangos" />
+          <EntitySet Name="RelJedisPadawans" EntityType="Self.RelJedisPadawans" />
+          <EntitySet Name="RelMiembrosPlanetas" EntityType="OrdenJediModel.RelMiembrosPlanetas" />
+          <EntitySet Name="Estatus" EntityType="OrdenJediModel.Estatus" />
+        </EntityContainer>
+        <EntityType Name="RelMiembrosPlanetas">
+          <Key>
+            <PropertyRef Name="MiembroID" />
+            <PropertyRef Name="PlanetaID" />
+          </Key>
+          <Property Name="MiembroID" Type="Int32" Nullable="false" />
+          <Property Name="PlanetaID" Type="Int32" Nullable="false" />
+          <Property Name="CreadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="EstatusID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estatus">
+          <Key>
+            <PropertyRef Name="EstatusID" />
+          </Key>
+          <Property Name="EstatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrdenJediModelStoreContainer" CdmEntityContainer="OrdenJediEntities">
+          <EntitySetMapping Name="Especies">
+            <EntityTypeMapping TypeName="OrdenJediModel.Especies">
+              <MappingFragment StoreEntitySet="Especies">
+                <ScalarProperty Name="EspecieID" ColumnName="EspecieID" />
+                <ScalarProperty Name="Especie" ColumnName="Especie" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Miembros">
+            <EntityTypeMapping TypeName="OrdenJediModel.Miembros">
+              <MappingFragment StoreEntitySet="Miembros">
+                <ScalarProperty Name="MiembroID" ColumnName="MiembroID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="EspecieID" ColumnName="EspecieID" />
+                <ScalarProperty Name="PlanetaID" ColumnName="PlanetaID" />
+                <ScalarProperty Name="RangoID" ColumnName="RangoID" />
+                <ScalarProperty Name="NivelMidiclorianos" ColumnName="NivelMidiclorianos" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="MiembroConsejo" ColumnName="MiembroConsejo" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Planetas">
+            <EntityTypeMapping TypeName="OrdenJediModel.Planetas">
+              <MappingFragment StoreEntitySet="Planetas">
+                <ScalarProperty Name="PlanetaID" ColumnName="PlanetaID" />
+                <ScalarProperty Name="Planeta" ColumnName="Planeta" />
+                <ScalarProperty Name="PerteneceARepublica" ColumnName="PerteneceARepublica" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rangos">
+            <EntityTypeMapping TypeName="OrdenJediModel.Rangos">
+              <MappingFragment StoreEntitySet="Rangos">
+                <ScalarProperty Name="RangoID" ColumnName="RangoID" />
+                <ScalarProperty Name="Rango" ColumnName="Rango" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelJedisPadawans">
+            <EntityTypeMapping TypeName="OrdenJediModel.RelJedisPadawans">
+              <MappingFragment StoreEntitySet="RelJedisPadawans">
+                <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+                <ScalarProperty Name="PadawanID" ColumnName="PadawanID" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelMiembrosPlanetas">
+            <EntityTypeMapping TypeName="OrdenJediModel.RelMiembrosPlanetas">
+              <MappingFragment StoreEntitySet="RelMiembrosPlanetas">
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="PlanetaID" ColumnName="PlanetaID" />
+                <ScalarProperty Name="MiembroID" ColumnName="MiembroID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estatus">
+            <EntityTypeMapping TypeName="OrdenJediModel.Estatus">
+              <MappingFragment StoreEntitySet="Estatus">
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estatus1" ColumnName="Estatus" />
+                <ScalarProperty Name="EstatusID" ColumnName="EstatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
